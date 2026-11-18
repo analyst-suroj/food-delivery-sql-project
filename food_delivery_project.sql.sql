@@ -60,6 +60,18 @@ update orders
  where status = 'Pending';
  
  alter table orders modify column price decimal(6,2);
+
+DELETE FROM orders
+WHERE customer_name IS NULL
+   OR restaurant_name IS NULL
+   OR food_item IS NULL
+   OR city IS NULL 
+   OR price IS NULL
+   OR rating IS NULL
+   OR delivery_time_min IS NULL 
+   OR status IS NULL ;
+   
+   SELECT * FROM orders ; 
  
  
 
