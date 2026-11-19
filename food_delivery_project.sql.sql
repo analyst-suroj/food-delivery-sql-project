@@ -70,6 +70,38 @@ WHERE customer_name IS NULL
    OR rating IS NULL
    OR delivery_time_min IS NULL 
    OR status IS NULL ;
+
+select sum(price) As total_revenue 
+from orders;
+
+select city, count(*) AS total_orders 
+from orders 
+group by city;
+
+select city, avg(price) as avg_price
+from orders 
+group by city 
+having avg(price) > 200;
+
+select customer_name,
+case 
+WHEN price >= 500 THEN 'High'
+        WHEN price >= 200 THEN 'Medium'
+        ELSE 'Low'
+    END AS order_category
+FROM orders;
+
+select city , count(order_id) as city_order
+from orders 
+group by city ;
+
+select city, sum(price) as revenue_city 
+from orders 
+group by city ;
+
+select city , avg(price) as avg_price 
+from orders
+group by city ;
    
    SELECT * FROM orders ; 
  
