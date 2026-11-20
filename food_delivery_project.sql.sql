@@ -105,6 +105,63 @@ group by city ;
    
    SELECT * FROM orders ; 
  
- 
+ select count(order_id) from orders
+where  status = 'Delivered';
+
+select food_item, avg(price) from orders
+where food_item  = 'Burger King';
+
+select city, avg(price) as avarage_price from orders
+group by city 
+having avg(price) >300;
+
+select status, count(order_id) from orders
+group by status ;
+
+select city, sum(price) from orders 
+group by city
+order by price desc ;
+
+Select order_id,
+price,
+case 
+    when price >= 500 then 'High'
+    when price >= 200 then 'Medium'
+    else 'low'
+    end as order_category 
+    from  orders;
+    
+    select price,
+    case
+       when price >= 500 then 'Premium'
+       when price >= 200 then 'Standard'
+        else 'Boudget'
+        end as classify_price
+        from orders;
+        
+        select delivery_time_min,
+        case 
+        when delivery_time_min <= 30 then 'fast'
+        when delivery_time_min <= 60 then  'Normal'
+        else 'Slow'
+        end as Classify_price
+        from orders;
+       
+       select rating,
+       case 
+       when rating >= 4.5 then 'Excellent'
+       when rating >= 3.5 then "Good"
+       else 'Needs Improvement'
+       end as Classfy_customer_ratings 
+       from orders;
+       
+       select status,
+       case 
+       when status = 'Delivered' then 'Completed'
+       when status = 'Pending' then 'Waiting'
+       when status = 'Cancelled' then 'Failed'
+       else 'other'
+       end as Classify_order_status
+       from orders ;
 
 
