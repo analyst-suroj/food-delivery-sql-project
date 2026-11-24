@@ -177,7 +177,7 @@ order by order_count desc ;
 
 select
 case
-    when rating >= 45 then 'Excellent'
+    when rating >= 4.5 then 'Excellent'
   when rating >= 3.5 then 'Good'
   else 'Need_Improvement'
 end as rating_catagory,
