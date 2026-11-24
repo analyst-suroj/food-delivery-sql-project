@@ -164,4 +164,26 @@ case
        end as Classify_order_status
        from orders ;
 
+select
+case
+        when delivery_time_min >= 30 then 'Fast'
+        when delivery_time_min <= 60 then 'Normal'
+else 'Slow'
+end as delivery_catagory,
+    count(*) as order_count
+from orders
+group by delivery_catagory
+order by order_count desc ;
+
+select
+case
+    when rating >= 45 then 'Excellent'
+  when rating >= 3.5 then 'Good'
+  else 'Need_Improvement'
+end as rating_catagory,
+ avg(price) as avarage_price
+from orders
+group by rating_catagory ;
+
+
 
