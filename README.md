@@ -1,4 +1,4 @@
 -- Food Delivery SQL Practice
 -- Learning and practicing SQL step-by-step using a single dataset.
 -- Topics: filtering, sorting, NULL handling, data modification,
--- aggregations, joins, subqueries, CTEs, window functions, and more.******
+-- aggregations, joins, subqueries, CTEs, window functions, and more.*****
