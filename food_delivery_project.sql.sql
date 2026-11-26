@@ -185,5 +185,31 @@ end as rating_catagory,
 from orders
 group by rating_catagory ;
 
+SELECT
+    CASE
+        WHEN price >= 500 then 'Expensive'
+    When price  >= 200 then  'Medium'
+else 'Cheap'
+end as new_category,
+ count(order_id) as total_orders
+from orders
+group by new_category
+order by total_orders desc;
+
+ALTER TABLE orders
+add quantity int;
+
+ALTER TABLE orders
+add revenue DECIMAL(10,2);
+UPDATE orders
+SET revenue = price * quantity;
+
+SELECT * from orders;
+
+update orders
+set quantity = floor(1+ rand() * 10)
+where quantity is null;
+
+select * from orders;
 
 
