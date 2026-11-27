@@ -212,4 +212,58 @@ where quantity is null;
 
 select * from orders;
 
+SELECT city,
+COUNT(order_id) as total_order,
+sum(case when delivery_time_min >= 30 then 1 else 0 end) as Number_of_fast_orders ,
+sum(case when delivery_time_min > 60 then 1 else 0 end) as Number_of_fast_orders
+from orders
+group by city
+order by total_order desc ;
+
+select restaurant_name,
+       sum(case when rating >= 4.5 then 1 else 0 end ) as high_rated_count,
+       sum(case when rating >= 4.5 then  revenue else 0 end) as high_rated_revanue
+from orders
+group by restaurant_name
+order by high_rated_revanue desc ;
+
+
+select city ,
+ sum(revenue) as total_revanue,
+ sum(case when status = 'Delivered'then revenue else 0 end) as delivered_revenue,
+ sum(case when status = 'Cancelled' then revenue else 0 end) as cancel_revenue
+from orders
+group by city
+order by delivered_revenue desc ;
+
+SELECT
+    city,
+    SUM(CASE WHEN status = 'Pending' THEN 1 ELSE 0 END) AS pending_orders,
+    SUM(CASE WHEN status = 'Pending' THEN revenue ELSE 0 END) AS pending_revenue
+FROM orders
+GROUP BY city
+ORDER BY pending_revenue DESC;
+
+-- 1. List unique values
+SELECT distinct city
+FROM orders;
+
+-- 2. Count unique values
+SELECT COUNT(DISTINCT city) AS unique_count
+FROM orders;
+
+select city,
+ count(order_id) as total_orders,
+ count(distinct customer_name) as unique_customers
+from orders
+group by city
+order by unique_customers desc ;
+
+select restaurant_name,
+ count(order_id) as total_orders,
+ count(distinct food_item) as unique_item
+from orders
+group by restaurant_name
+order by unique_item desc ;
+
 
